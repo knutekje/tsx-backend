@@ -1,12 +1,22 @@
 import express from 'express';
+import { AppDataSource } from './config/dbConfig';
+import { taskRoutes } from './routes/taskRoutes';
 
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello, TypeScript with Express!');
-});
+app.use(express.json()); 
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
-});
+app.use('/api/tasks', taskRoutes);
+
+AppDataSource.initialize()
+    .then(() => {
+
+        console.log('Database connected successfully');
+        app.listen(4000, () => {
+            console.log('Server is running on http://localhost:4000');
+        });
+    })
+    .catch((error) => {
+        console.error('Database connection failed:', error);
+    });
