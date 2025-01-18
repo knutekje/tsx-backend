@@ -1,4 +1,4 @@
-import redisClient from "../utils/redisClient";
+/* import redisClient from "../utils/redisClient";
 
 export class SessionService {
   static async createSession(sessionId: string, data: any, ttlSeconds: number) {
@@ -27,3 +27,4 @@ export class SessionService {
     await redisClient.del(key);
   }
 }
+ */

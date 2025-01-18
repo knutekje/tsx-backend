@@ -4,7 +4,7 @@ import { taskRoutes } from './routes/taskRoutes';
 import cors from 'cors';
 import 'reflect-metadata';
 import { authRoutes } from './routes/authRoutes';
-import { createClient } from "redis";
+//import { createClient } from "redis";
 import rateLimiter from './middleware/rateLimiter';
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
@@ -22,11 +22,11 @@ const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 console.log(`Swagger documentation available at http://localhost:${PORT}/api-docs`);
 
-const redisUrl = process.env.REDIS_URL || "redis://localhost:6379";
+/* const redisUrl = process.env.REDIS_URL || "redis://localhost:6379";
 
 const redisClient = createClient({
   url: redisUrl,
-});
+}); */
 app.use(rateLimiter(5, 10));
 
 app.use((req, res, next) =>{
@@ -36,7 +36,7 @@ app.use((req, res, next) =>{
 })
 
 const jwtSecret = process.env.JWT_SECRET;
-const jwtExpiration = process.env.JWT_EXPIRATION;
+//const jwtExpiration = process.env.JWT_EXPIRATION;
 
 
 if (!jwtSecret) {

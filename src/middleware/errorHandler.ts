@@ -2,14 +2,14 @@ import { Request, Response, NextFunction } from "express";
 
 import { logger } from "../config/logger";
 
-export const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
     logger.error({
       message: err.message,
       stack: process.env.NODE_ENV === "production" ? undefined : err.stack,
       route: req.originalUrl,
     });
   
-    res.status(err.status || 500).json({
+    res.status(500).json({
       message: "Internal Server Error",
     });
   };
@@ -19,7 +19,7 @@ export const asyncHandler = (fn: Function) => (req: Request, res: Response, next
 
   process.on("uncaughtException", (err) => {
     console.error("Uncaught Exception:", err);
-    process.exit(1); // Restart the app using a process manager like PM2
+    process.exit(1); 
   });
   
   process.on("unhandledRejection", (reason, promise) => {

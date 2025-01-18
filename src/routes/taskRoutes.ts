@@ -37,7 +37,7 @@ export const taskRoutes = express.Router();
     
 taskRoutes.get("/", authenticateJWT,
             asyncHandler(async (req: express.Request, res: express.Response) => {
-              const tasks = await getAllTasks(req, res);
+              /* const tasks = */ await getAllTasks(req, res);
             })
           );
         
