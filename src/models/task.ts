@@ -27,6 +27,5 @@ export class Task {
     @UpdateDateColumn()
     updatedAt!: Date;
 
-    @ManyToOne(() => User, (user) => user.tasks)
-    user!: User;
+
 }

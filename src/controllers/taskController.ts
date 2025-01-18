@@ -1,6 +1,7 @@
 import { Task } from "../models/task";
 import { TaskService } from "../services/taskService";
 import { taskType } from "../types";
+import { Response, Request } from "express";
 
 
 
@@ -18,10 +19,13 @@ export const getAllTasks = async (req: Request, res: Response) => {
 
 export const createTask = async (req: Request, res: Response) => {
     try {
-        const task = await taskService.createTask(req.body);
-        res.status(201).json(task);
+  
+      const task = await taskService.createTask(req.body);
+      res.status(201).json(task);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Failed to create task' });
+      console.error(error);
+      res.status(500).json({ message: "Failed to create task" });
     }
-};
+  };
+  
+  

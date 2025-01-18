@@ -12,7 +12,8 @@ export class TaskService{
             
         }
         async createTask(task: taskType){
-
+            console.log(`task in the service ${task.title}`)
+            TaskRepository.save(task)
         }
 
         async completeTask(taskId: string){
