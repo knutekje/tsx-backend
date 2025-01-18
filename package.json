@@ -7,6 +7,7 @@
     "start:dev": "NODE_ENV=development tsc && node dist/main.js",
     "start": "tsc && node dist/main.js",
     "build": "tsc",
+    "lint": "eslint .",
     "test": "jest --runInBand --detectOpenHandles"
   },
   "keywords": [],
@@ -30,6 +31,7 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.18.0",
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
@@ -41,10 +43,13 @@
     "@types/supertest": "^6.0.2",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.7",
+    "eslint": "^9.18.0",
+    "globals": "^15.14.0",
     "jest": "^29.7.0",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
   }
 }
