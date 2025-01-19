@@ -22,11 +22,7 @@ const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 console.log(`Swagger documentation available at http://localhost:${PORT}/api-docs`);
 
-/* const redisUrl = process.env.REDIS_URL || "redis://localhost:6379";
 
-const redisClient = createClient({
-  url: redisUrl,
-}); */
 app.use(rateLimiter(5, 10));
 
 app.use((req, res, next) =>{
